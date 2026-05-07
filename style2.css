@@ -1,0 +1,551 @@
+/* ================================================
+   CSS CUSTOM PROPERTIES — design tokens
+================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
+
+:root {
+    --clr-bg:        #f7f5f2;
+    --clr-surface:   #ffffff;
+    --clr-primary:   #0a2540;
+    --clr-accent:    #c8401b;
+    --clr-muted:     #6b7280;
+    --clr-border:    #e2ddd6;
+
+    --ff-display: 'Syne', sans-serif;
+    --ff-body:    'DM Sans', sans-serif;
+
+    --radius-sm: 6px;
+    --radius-md: 14px;
+    --radius-lg: 24px;
+
+    --shadow-hover: 0 8px 32px rgba(10,37,64,.13), 0 2px 8px rgba(10,37,64,.06);
+    --transition: .25s cubic-bezier(.4,0,.2,1);
+}
+
+/* ================================================
+   RESET & BASE
+================================================ */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: var(--ff-body);
+    background: var(--clr-bg);
+    color: var(--clr-primary);
+    line-height: 1.65;
+    font-size: 16px;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+/* ================================================
+   TOPBAR — government / accessibility strip
+================================================ */
+.topbar {
+    background: var(--clr-primary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .45rem 2rem;
+    flex-wrap: wrap;
+    gap: .5rem;
+}
+
+.topbar p {
+    display: inline;
+}
+
+.topbar a {
+    color: rgba(255,255,255,.6);
+    font-size: .75rem;
+    letter-spacing: .03em;
+    transition: color var(--transition);
+}
+
+.topbar a:hover {
+    color: #fff;
+}
+
+/* Groups of links inside topbar */
+.links-gov,
+.links-main {
+    display: flex;
+    gap: 1.25rem;
+    align-items: center;
+}
+
+/* ================================================
+   NAVEGACAO — main sticky header
+================================================ */
+.navegacao {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--clr-surface);
+    border-bottom: 1px solid var(--clr-border);
+    box-shadow: 0 1px 0 rgba(10,37,64,.04);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    height: 72px;
+    gap: 2rem;
+}
+
+/* ---- Logo / Brand ---- */
+.title {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    flex-shrink: 0;
+}
+
+.logo img {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-sm);
+    object-fit: contain;
+}
+
+.text-title p:first-child {
+    font-family: var(--ff-display);
+    font-weight: 700;
+    font-size: .95rem;
+    color: var(--clr-primary);
+    line-height: 1.2;
+}
+
+.text-title p:last-child {
+    font-size: .7rem;
+    color: var(--clr-muted);
+    letter-spacing: .04em;
+    text-transform: uppercase;
+}
+
+/* ---- Nav links + search row ---- */
+.pesquisa {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex: 1;
+    justify-content: flex-end;
+}
+
+/* Primary nav */
+nav {
+    display: flex;
+    gap: .1rem;
+}
+
+nav a {
+    font-size: .875rem;
+    font-weight: 500;
+    padding: .45rem .8rem;
+    border-radius: var(--radius-sm);
+    color: var(--clr-muted);
+    transition: color var(--transition), background var(--transition);
+}
+
+nav a:hover {
+    color: var(--clr-primary);
+    background: var(--clr-bg);
+}
+
+nav a:first-child {
+    color: var(--clr-primary);
+}
+
+/* Search input */
+.search {
+    display: flex;
+    align-items: center;
+    background: var(--clr-bg);
+    border: 1.5px solid var(--clr-border);
+    border-radius: 99px;
+    padding: .35rem 1rem;
+    transition: border-color var(--transition);
+}
+
+.search:focus-within {
+    border-color: var(--clr-primary);
+}
+
+.search input {
+    border: none;
+    background: transparent;
+    outline: none;
+    font-family: var(--ff-body);
+    font-size: .85rem;
+    color: var(--clr-primary);
+    width: 200px;
+}
+
+.search input::placeholder {
+    color: var(--clr-muted);
+}
+
+/* ================================================
+   SECTION — INICIO (hero)
+================================================ */
+.inicio {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 4.5rem 2rem 3.5rem;
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 3rem;
+    align-items: center;
+}
+
+/* ---- Welcome text block ---- */
+.welcome {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.text-welcome {
+    display: flex;
+    flex-direction: column;
+    gap: .9rem;
+}
+
+/* Eyebrow label */
+#welcome {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    font-size: .75rem;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--clr-accent);
+}
+
+#welcome::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 2px;
+    background: currentColor;
+    border-radius: 2px;
+}
+
+/* School / institution name — main heading */
+.text-welcome p:nth-child(2) {
+    font-family: var(--ff-display);
+    font-weight: 800;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.1;
+    letter-spacing: -.03em;
+    color: var(--clr-primary);
+}
+
+/* Descriptive paragraph */
+.text-welcome p:nth-child(3) {
+    font-size: 1.05rem;
+    color: var(--clr-muted);
+    font-weight: 300;
+    max-width: 460px;
+    line-height: 1.7;
+}
+
+/* Open hours pill */
+.grenn-flick {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #22c55e;
+    animation: pulse 2s infinite;
+    vertical-align: middle;
+    margin-right: .35rem;
+    flex-shrink: 0;
+}
+
+/* The hours text sits as the last child of .text-welcome,
+   wrap it with a pill style using a pseudo-element trick via sibling */
+.text-welcome .grenn-flick + * ,
+.text-welcome > *:last-child {
+    /* target the text node — we style the container instead */
+}
+
+/* Hours container — the div.grenn-flick and its adjacent text
+   are wrapped implicitly; we style the whole block */
+.text-welcome {
+    /* already flex column, the flick + text reads inline */
+}
+
+/* Pulse animation for the green dot */
+@keyframes pulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(34,197,94,.4); }
+    50%       { opacity: .6; box-shadow: 0 0 0 5px rgba(34,197,94,0); }
+}
+
+/* ---- Quick access cards column ---- */
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+}
+
+/* Each option card shares the same base style */
+.opcao-1,
+.opcao-2,
+.opcao-3,
+.opcao-4 {
+    background: var(--clr-surface);
+    border: 1.5px solid var(--clr-border);
+    border-radius: var(--radius-md);
+    padding: 1.1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+
+.opcao-1:hover,
+.opcao-2:hover,
+.opcao-3:hover,
+.opcao-4:hover {
+    transform: translateX(5px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--clr-primary);
+}
+
+/* Card icon boxes — each gets a unique tint */
+.image-option-1,
+.image-option-2,
+.image-option-3,
+.image-option-4 {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-sm);
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    font-size: 1.25rem;
+}
+
+.image-option-1 { background: #eef2ff; }
+.image-option-2 { background: #fef3c7; }
+.image-option-3 { background: #fce7f3; }
+.image-option-4 { background: #dcfce7; }
+
+/* Emoji icons via ::after — you can swap for <img> if you have assets */
+.image-option-1::after { content: '📚'; }
+.image-option-2::after { content: '🔬'; }
+.image-option-3::after { content: '📋'; }
+.image-option-4::after { content: '💬'; }
+
+/* Card text blocks */
+.text-option-1 p:first-child,
+.text-option-2 p:first-child,
+.text-option-3 p:first-child,
+.text-option-4 p:first-child {
+    font-weight: 600;
+    font-size: .88rem;
+    color: var(--clr-primary);
+}
+
+/* Subtitle text inside opcao-2 is outside the inner div — handled below */
+.opcao-2 > p:nth-of-type(1) { font-weight: 600; font-size: .88rem; color: var(--clr-primary); }
+.opcao-2 > p:nth-of-type(2) { font-size: .75rem; color: var(--clr-muted); margin-top: .1rem; }
+
+.text-option-1 p:last-child,
+.text-option-2 p:last-child,
+.text-option-3 p:last-child,
+.text-option-4 p:last-child {
+    font-size: .75rem;
+    color: var(--clr-muted);
+    margin-top: .1rem;
+}
+
+/* Arrow indicators */
+.arrow-option-1,
+.arrow-option-2,
+.arrow-option-3,
+.arrow-option-4 {
+    margin-left: auto;
+    color: var(--clr-muted);
+    font-size: 1rem;
+    flex-shrink: 0;
+    transition: transform var(--transition), color var(--transition);
+}
+
+.opcao-1:hover .arrow-option-1,
+.opcao-2:hover .arrow-option-2,
+.opcao-3:hover .arrow-option-3,
+.opcao-4:hover .arrow-option-4 {
+    transform: translateX(4px);
+    color: var(--clr-primary);
+}
+
+/* ================================================
+   SECTION — NUMBERS (statistics bar)
+================================================ */
+.numbers {
+    max-width: 1280px;
+    margin: 0 auto 3.5rem;
+    padding: 0 2rem;
+}
+
+.estatistics {
+    background: var(--clr-surface);
+    border: 1.5px solid var(--clr-border);
+    border-radius: var(--radius-lg);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+/* Each stat cell */
+.estatistics > div {
+    padding: 2rem 1.75rem;
+    border-right: 1px solid var(--clr-border);
+}
+
+/* Remove right border on last item */
+#end {
+    border-right: none;
+}
+
+/* Big number */
+.estatistics > div p:first-child {
+    font-family: var(--ff-display);
+    font-weight: 800;
+    font-size: 2rem;
+    color: var(--clr-primary);
+    letter-spacing: -.04em;
+    line-height: 1;
+    margin-bottom: .35rem;
+}
+
+/* Highlight the "+" and unit characters in accent color */
+.num  { color: var(--clr-primary); }
+.unit { color: #e8a840; }
+
+/* Label below the number */
+.estatistics > div p:last-child {
+    font-size: .8rem;
+    color: var(--clr-muted);
+    line-height: 1.4;
+}
+
+/* ================================================
+   RESPONSIVE — tablet
+================================================ */
+@media (max-width: 1024px) {
+    .inicio {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        padding: 2.5rem 1.5rem;
+    }
+
+    .options {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .estatistics {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Add bottom border to top row of stats */
+    .estatistics > div:nth-child(1),
+    .estatistics > div:nth-child(2) {
+        border-bottom: 1px solid var(--clr-border);
+    }
+
+    /* Remove right border on even cells */
+    .estatistics > div:nth-child(2) {
+        border-right: none;
+    }
+}
+
+/* ================================================
+   RESPONSIVE — mobile
+================================================ */
+@media (max-width: 768px) {
+    .topbar {
+        padding: .4rem 1rem;
+    }
+
+    .links-gov {
+        display: none;
+    }
+
+    .navegacao {
+        padding: 0 1rem;
+        height: auto;
+        flex-wrap: wrap;
+        padding-top: .75rem;
+        padding-bottom: .75rem;
+        gap: .75rem;
+    }
+
+    .pesquisa {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: .6rem;
+        width: 100%;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        gap: .1rem;
+    }
+
+    .search {
+        width: 100%;
+    }
+
+    .search input {
+        width: 100%;
+    }
+
+    .inicio {
+        padding: 2rem 1rem;
+    }
+
+    .options {
+        grid-template-columns: 1fr;
+    }
+
+    .estatistics {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .numbers {
+        padding: 0 1rem;
+        margin-bottom: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .estatistics {
+        grid-template-columns: 1fr;
+    }
+
+    .estatistics > div {
+        border-right: none !important;
+        border-bottom: 1px solid var(--clr-border);
+    }
+
+    #end {
+        border-bottom: none !important;
+    }
+}
